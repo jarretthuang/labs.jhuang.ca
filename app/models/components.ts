@@ -141,6 +141,12 @@ export const DIFF_TOOL = new Component(
   "A diff tool similar to git.",
 );
 
+export const DOM_VIRTUALIZATION = new Component(
+  "dom-virtualization",
+  "DOM Virtualization",
+  "A virtualized scrolling list that renders only visible rows for better performance.",
+);
+
 const ALL_COMPONENTS = [
   SIGNUP_FORM,
   NESTED_CHECKBOXES,
@@ -159,6 +165,7 @@ const ALL_COMPONENTS = [
   TIC_TAC_TOE_PRO_MAX,
   TOAST,
   STAR_RATING,
+  DOM_VIRTUALIZATION,
   // DIFF_TOOL,
 ];
 
