@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { DOM_VIRTUALIZATION } from "~/models/components";
+import { getVisibleRange } from "./virtualization";
 
 export const meta = () => DOM_VIRTUALIZATION.meta;
 export const handle = DOM_VIRTUALIZATION.routeHandle;
@@ -17,11 +18,13 @@ export default function DomVirtualizationDemo() {
     [],
   );
 
-  const startIndex = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN);
-  const endIndex = Math.min(
-    data.length,
-    startIndex + VISIBLE_COUNT + OVERSCAN * 2,
-  );
+  const { startIndex, endIndex } = getVisibleRange({
+    totalRows: data.length,
+    scrollTop,
+    rowHeight: ROW_HEIGHT,
+    visibleCount: VISIBLE_COUNT,
+    overscan: OVERSCAN,
+  });
   const visibleRows = data.slice(startIndex, endIndex);
 
   return (
